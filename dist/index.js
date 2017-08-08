@@ -5793,6 +5793,8 @@ function init$1 (Vue/*, options = {}*/) {
   Vue.config.isReservedTag = function (tag) { return htmlRegex.test(tag); };
   Vue.config.parsePlatformTagName = function (tag) { return tag.replace(htmlRegex, ''); };
 
+  installComponents();
+
   Vue.mixin(base$1);
   Vue.mixin(style);
   Vue.mixin(sticky);
@@ -11167,11 +11169,13 @@ var modules$1 = [
   webview$1
 ];
 
-var plugins = components.concat(modules$1);
+function installComponents () {
+  var plugins = components.concat(modules$1);
 
-plugins.forEach(function (plugin) {
-  weex.install(plugin);
-});
+  plugins.forEach(function (plugin) {
+    weex.install(plugin);
+  });
+}
 
 return weex;
 

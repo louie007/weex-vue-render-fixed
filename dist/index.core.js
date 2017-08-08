@@ -5793,6 +5793,8 @@ function init$1 (Vue/*, options = {}*/) {
   Vue.config.isReservedTag = function (tag) { return htmlRegex.test(tag); };
   Vue.config.parsePlatformTagName = function (tag) { return tag.replace(htmlRegex, ''); };
 
+  installComponents();
+
   Vue.mixin(base$1);
   Vue.mixin(style);
   Vue.mixin(sticky);
@@ -7488,10 +7490,12 @@ var scrollable = {
   }
 };
 
-weex.install(div);
-weex.install(text);
-weex.install(image$1);
-weex.install(scrollable);
+function installComponents () {
+  weex.install(div);
+  weex.install(text);
+  weex.install(image$1);
+  weex.install(scrollable);
+}
 
 return weex;
 
